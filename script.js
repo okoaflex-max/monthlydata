@@ -133,7 +133,7 @@ function showDataPlans() {
         plansContainer.appendChild(planCard);
     });
     
-    // Show the section
+    // Show section
     dataPlansSection.classList.remove('d-none');
     
     // Scroll to plans
@@ -186,28 +186,9 @@ function selectPlan(planId) {
 }
 
 function showPaymentSection() {
-    console.log('showPaymentSection called');
-    console.log('selectedPlan:', selectedPlan);
-    console.log('airtelNumber:', airtelNumber);
-    
     const paymentSection = document.getElementById('paymentSection');
     const selectedPlanInfo = document.getElementById('selectedPlanInfo');
     const confirmPhoneNumber = document.getElementById('confirmPhoneNumber');
-    
-    if (!paymentSection) {
-        console.error('paymentSection element not found!');
-        return;
-    }
-    
-    if (!selectedPlanInfo) {
-        console.error('selectedPlanInfo element not found!');
-        return;
-    }
-    
-    if (!confirmPhoneNumber) {
-        console.error('confirmPhoneNumber element not found!');
-        return;
-    }
     
     // Update payment info
     selectedPlanInfo.innerHTML = `
@@ -216,7 +197,7 @@ function showPaymentSection() {
         Valid for ${selectedPlan.validity}
     `;
     
-    // Use the globally set airtelNumber variable
+    // Use globally set airtelNumber variable
     confirmPhoneNumber.textContent = `+254 ${airtelNumber}`;
     
     // Show payment section
@@ -224,8 +205,6 @@ function showPaymentSection() {
     
     // Scroll to payment
     paymentSection.scrollIntoView({ behavior: 'smooth' });
-    
-    console.log('Payment section should now be visible');
 }
 
 function initiatePayment() {
