@@ -194,6 +194,7 @@ function showPaymentSection() {
         Valid for ${selectedPlan.validity}
     `;
     
+    // Use the globally set airtelNumber variable
     confirmPhoneNumber.textContent = `+254 ${airtelNumber}`;
     
     // Show payment section
