@@ -169,23 +169,47 @@ function createPlanCard(plan) {
 }
 
 function selectPlan(planId) {
+    console.log('selectPlan called with planId:', planId);
+    
     selectedPlan = dataPlans.find(plan => plan.id === planId);
+    console.log('selectedPlan found:', selectedPlan);
+    console.log('airtelNumber:', airtelNumber);
     
     // Update UI to show selected plan
     document.querySelectorAll('.plan-card').forEach(card => {
         card.classList.remove('selected');
     });
     
-    document.querySelector(`[data-plan-id="${planId}"]`).classList.add('selected');
+    const selectedCard = document.querySelector(`[data-plan-id="${planId}"]`);
+    console.log('selectedCard element:', selectedCard);
+    
+    if (selectedCard) {
+        selectedCard.classList.add('selected');
+    }
     
     // Show payment section
     showPaymentSection();
 }
 
 function showPaymentSection() {
+    console.log('showPaymentSection called');
+    console.log('selectedPlan:', selectedPlan);
+    console.log('airtelNumber:', airtelNumber);
+    
     const paymentSection = document.getElementById('paymentSection');
     const selectedPlanInfo = document.getElementById('selectedPlanInfo');
     const confirmPhoneNumber = document.getElementById('confirmPhoneNumber');
+    
+    console.log('Elements found:', {
+        paymentSection: !!paymentSection,
+        selectedPlanInfo: !!selectedPlanInfo,
+        confirmPhoneNumber: !!confirmPhoneNumber
+    });
+    
+    if (!paymentSection || !selectedPlanInfo || !confirmPhoneNumber) {
+        console.error('Missing elements!');
+        return;
+    }
     
     // Update payment info
     selectedPlanInfo.innerHTML = `
@@ -202,6 +226,8 @@ function showPaymentSection() {
     
     // Scroll to payment
     paymentSection.scrollIntoView({ behavior: 'smooth' });
+    
+    console.log('Payment section should now be visible');
 }
 
 function initiatePayment() {
