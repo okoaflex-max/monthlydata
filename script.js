@@ -169,7 +169,10 @@ function createPlanCard(plan) {
 }
 
 function selectPlan(planId) {
+    console.log('selectPlan called with planId:', planId);
+    
     selectedPlan = dataPlans.find(plan => plan.id === planId);
+    console.log('selectedPlan found:', selectedPlan);
     
     // Update UI to show selected plan
     document.querySelectorAll('.plan-card').forEach(card => {
@@ -183,9 +186,28 @@ function selectPlan(planId) {
 }
 
 function showPaymentSection() {
+    console.log('showPaymentSection called');
+    console.log('selectedPlan:', selectedPlan);
+    console.log('airtelNumber:', airtelNumber);
+    
     const paymentSection = document.getElementById('paymentSection');
     const selectedPlanInfo = document.getElementById('selectedPlanInfo');
     const confirmPhoneNumber = document.getElementById('confirmPhoneNumber');
+    
+    if (!paymentSection) {
+        console.error('paymentSection element not found!');
+        return;
+    }
+    
+    if (!selectedPlanInfo) {
+        console.error('selectedPlanInfo element not found!');
+        return;
+    }
+    
+    if (!confirmPhoneNumber) {
+        console.error('confirmPhoneNumber element not found!');
+        return;
+    }
     
     // Update payment info
     selectedPlanInfo.innerHTML = `
@@ -202,6 +224,8 @@ function showPaymentSection() {
     
     // Scroll to payment
     paymentSection.scrollIntoView({ behavior: 'smooth' });
+    
+    console.log('Payment section should now be visible');
 }
 
 function initiatePayment() {
@@ -421,4 +445,20 @@ function resetForm() {
     
     // Close modal
     bootstrap.Modal.getInstance(document.getElementById('successModal')).hide();
+}
+
+// Test function to verify everything is working
+function testFunctions() {
+    console.log('=== TESTING FUNCTIONS ===');
+    console.log('dataPlans:', dataPlans);
+    console.log('selectPlan function exists:', typeof selectPlan);
+    console.log('showPaymentSection function exists:', typeof showPaymentSection);
+    
+    // Test selectPlan directly
+    selectPlan('basic');
+    console.log('After calling selectPlan(basic):');
+    console.log('selectedPlan:', selectedPlan);
+    
+    // Test showPaymentSection directly
+    showPaymentSection();
 }
