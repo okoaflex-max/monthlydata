@@ -145,7 +145,7 @@ function createPlanCard(plan) {
     col.className = 'col-md-6 col-lg-4';
     
     col.innerHTML = `
-        <div class="card plan-card h-100" onclick="selectPlan(${plan.id})" data-plan-id="${plan.id}">
+        <div class="card plan-card h-100" data-plan-id="${plan.id}" onclick="selectPlan(${plan.id})">
             ${plan.popular ? '<div class="popular-badge">POPULAR</div>' : ''}
             <div class="card-body text-center">
                 <h5 class="card-title">${plan.name}</h5>
@@ -158,10 +158,10 @@ function createPlanCard(plan) {
                 <ul class="features-list text-start">
                     ${plan.features.map(feature => `<li>${feature}</li>`).join('')}
                 </ul>
-                <button class="btn btn-danger btn-sm mt-3">
-                    Select Plan
-                </button>
             </div>
+            <button class="btn btn-danger btn-sm mt-3" onclick="selectPlan(${plan.id})">
+                Select Plan
+            </button>
         </div>
     `;
     
