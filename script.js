@@ -190,30 +190,45 @@ function selectPlan(planId) {
 }
 
 function showPaymentSection() {
+    console.log('=== showPaymentSection called ===');
+    console.log('selectedPlan:', selectedPlan);
+    console.log('airtelNumber:', airtelNumber);
+    
     const paymentSection = document.getElementById('paymentSection');
     const selectedPlanInfo = document.getElementById('selectedPlanInfo');
     const confirmPhoneNumber = document.getElementById('confirmPhoneNumber');
     
+    console.log('Elements found:', {
+        paymentSection: !!paymentSection,
+        selectedPlanInfo: !!selectedPlanInfo,
+        confirmPhoneNumber: !!confirmPhoneNumber,
+        paymentSectionClasses: paymentSection ? paymentSection.className : 'not found'
+    });
+
     if (!paymentSection || !selectedPlanInfo || !confirmPhoneNumber) {
         console.error('Required elements not found');
         return;
     }
-    
+
     // Update payment info
     selectedPlanInfo.innerHTML = `
         <strong>${selectedPlan.name} Plan</strong><br>
         ${selectedPlan.data} for Ksh ${selectedPlan.price}<br>
         Valid for ${selectedPlan.validity}
     `;
-    
+
     // Use globally set airtelNumber variable
     confirmPhoneNumber.textContent = '+254 ' + airtelNumber;
-    
+
     // Show payment section
+    console.log('Before removing d-none:', paymentSection.className);
     paymentSection.classList.remove('d-none');
-    
+    console.log('After removing d-none:', paymentSection.className);
+
     // Scroll to payment
     paymentSection.scrollIntoView({ behavior: 'smooth' });
+    
+    console.log('=== Payment section should now be visible ===');
 }
 
 function initiatePayment() {
