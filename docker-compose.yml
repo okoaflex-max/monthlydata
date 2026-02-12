@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  airtel-app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - PAYHERO_BASIC_TOKEN=${PAYHERO_BASIC_TOKEN}
+      - PAYHERO_API_SECRET=${PAYHERO_API_SECRET}
+      - PAYHERO_CALLBACK_URL=${PAYHERO_CALLBACK_URL}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "healthcheck.js"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
