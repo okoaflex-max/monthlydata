@@ -1,4 +1,4 @@
-// Airtel Data Bundles JavaScript - Simplified Version
+// Airtel Data Bundles JavaScript - Fixed Version v2.0
 
 // Data plans configuration
 const dataPlans = [
