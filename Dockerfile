@@ -24,9 +24,13 @@ USER nodejs
 # Expose port
 EXPOSE 3000
 
+# Set environment variables with defaults
+ENV NODE_ENV=production
+ENV PORT=3000
+
 # Health check
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
   CMD node healthcheck.js || exit 1
 
-# Start the application
-CMD ["node", "server.js"]
+# Start application with explicit environment
+CMD ["sh", "-c", "node server.js"]
