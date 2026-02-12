@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airtel Data Bundles - Monthly Plans</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="bg-danger text-white py-3">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h1 class="h3 mb-0">
+                        <i class="fas fa-wifi me-2"></i>
+                        Airtel Data Bundles
+                    </h1>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <span class="badge bg-light text-dark">
+                        <i class="fas fa-shield-alt me-1"></i>
+                        Secure Payment
+                    </span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container my-5">
+        <!-- Phone Number Input -->
+        <section class="row mb-4">
+            <div class="col-lg-8 mx-auto">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="fas fa-mobile-alt me-2"></i>
+                            Enter Your Airtel Number
+                        </h5>
+                        <form id="phoneForm">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">+254</span>
+                                <input type="tel" class="form-control" id="phoneNumber" 
+                                       placeholder="07XX XXX XXX or 01XX XXX XXX" maxlength="10" required>
+                                <button class="btn btn-danger" type="submit">
+                                    <i class="fas fa-search me-1"></i>
+                                    Buy data
+                                </button>
+                            </div>
+                            <div id="phoneError" class="alert alert-danger d-none"></div>
+                            <div id="phoneSuccess" class="alert alert-success d-none"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Plans -->
+        <section id="dataPlans" class="row mb-4 d-none">
+            <div class="col-12">
+                <h3 class="text-center mb-4">Choose Your Monthly Data Bundle</h3>
+            </div>
+            
+            <!-- Data Plan Cards -->
+            <div class="col-lg-8 mx-auto">
+                <div class="row g-3" id="plansContainer">
+                    <!-- Plans will be dynamically loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Payment Section -->
+        <section id="paymentSection" class="row d-none">
+            <div class="col-lg-6 mx-auto">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="fas fa-credit-card me-2"></i>
+                            Complete Purchase
+                        </h5>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Selected Plan:</label>
+                            <div class="alert alert-info" id="selectedPlanInfo"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Airtel Number:</label>
+                            <div class="form-control" id="confirmPhoneNumber"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">M-Pesa Number:</label>
+                            <input type="tel" class="form-control" id="mpesaNumber" 
+                                   placeholder="07XX XXX XXX" maxlength="10" required>
+                            <small class="text-muted">Enter the M-Pesa number to pay from</small>
+                        </div>
+
+                        <button id="payButton" class="btn btn-success btn-lg w-100">
+                            <i class="fas fa-lock me-2"></i>
+                            Pay with M-Pesa STK Push
+                        </button>
+
+                        <div id="paymentStatus" class="mt-3"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Success Modal -->
+        <div class="modal fade" id="successModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-success text-white">
+                        <h5 class="modal-title">
+                            <i class="fas fa-check-circle me-2"></i>
+                            Payment Successful!
+                        </h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Your data bundle has been successfully activated!</p>
+                        <div id="successDetails"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger" onclick="resetForm()">New Purchase</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h6>Airtel Data Bundles</h6>
+                    <p class="small mb-0">Official monthly data bundle purchase platform</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="small mb-0">
+                        <i class="fas fa-shield-alt me-1"></i>
+                        Secured with 256-bit encryption
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

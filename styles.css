@@ -1,0 +1,199 @@
+/* Custom Styles for Airtel Data Bundles */
+
+:root {
+    --airtel-red: #E4002B;
+    --airtel-dark: #8B0000;
+    --success-green: #28a745;
+    --warning-yellow: #ffc107;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #E4002B 0%, #8B0000 100%);
+    min-height: 100vh;
+}
+
+header {
+    background: var(--airtel-red) !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.card {
+    border: none;
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.plan-card {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.plan-card:hover {
+    border-color: var(--airtel-red);
+    transform: translateY(-3px);
+}
+
+.plan-card.selected {
+    border-color: var(--airtel-red);
+    background: linear-gradient(135deg, rgba(228,0,43,0.1) 0%, rgba(139,0,0,0.1) 100%);
+}
+
+.plan-price {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--airtel-red);
+}
+
+.plan-data {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.plan-validity {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.popular-badge {
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    background: var(--warning-yellow);
+    color: #000;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    z-index: 10;
+}
+
+.btn-danger {
+    background: var(--airtel-red);
+    border-color: var(--airtel-red);
+}
+
+.btn-danger:hover {
+    background: var(--airtel-dark);
+    border-color: var(--airtel-dark);
+}
+
+.btn-success {
+    background: var(--success-green);
+    border-color: var(--success-green);
+}
+
+.form-control:focus {
+    border-color: var(--airtel-red);
+    box-shadow: 0 0 0 0.2rem rgba(228,0,43,0.25);
+}
+
+.input-group-text {
+    background: var(--airtel-red);
+    color: white;
+    border-color: var(--airtel-red);
+}
+
+.loading-spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255,255,255,.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.stk-push-animation {
+    text-align: center;
+    padding: 20px;
+}
+
+.stk-push-animation i {
+    font-size: 3rem;
+    color: var(--success-green);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.features-list {
+    list-style: none;
+    padding: 0;
+}
+
+.features-list li {
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.features-list li:before {
+    content: "✓";
+    color: var(--success-green);
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+footer {
+    background: #1a1a1a !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .plan-price {
+        font-size: 1.5rem;
+    }
+    
+    .plan-data {
+        font-size: 1.2rem;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+}
+
+/* Loading states */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Success animation */
+.success-checkmark {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+}
+
+.success-checkmark i {
+    font-size: 4rem;
+    color: var(--success-green);
+    animation: scaleIn 0.5s ease-in-out;
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
