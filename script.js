@@ -223,7 +223,16 @@ function showPaymentSection() {
     // Show payment section
     console.log('Before removing d-none:', paymentSection.className);
     paymentSection.classList.remove('d-none');
+    
+    // Force visibility with inline styles
+    paymentSection.style.display = 'block';
+    paymentSection.style.visibility = 'visible';
+    
     console.log('After removing d-none:', paymentSection.className);
+    console.log('Payment section styles:', {
+        display: paymentSection.style.display,
+        visibility: paymentSection.style.visibility
+    });
 
     // Scroll to payment
     paymentSection.scrollIntoView({ behavior: 'smooth' });
