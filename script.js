@@ -63,7 +63,19 @@ let airtelNumber = '';
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('JavaScript loaded successfully');
     initializeEventListeners();
+    
+    // Add a test button to verify JavaScript is working
+    setTimeout(() => {
+        const testDiv = document.createElement('div');
+        testDiv.innerHTML = `
+            <button onclick="alert('JavaScript is working!')" style="position:fixed;top:10px;right:10px;z-index:9999;background:red;color:white;padding:5px;">
+                Test JS
+            </button>
+        `;
+        document.body.appendChild(testDiv);
+    }, 2000);
 });
 
 function initializeEventListeners() {
@@ -169,6 +181,7 @@ function createPlanCard(plan) {
 }
 
 function selectPlan(planId) {
+    alert('selectPlan called with: ' + planId);
     console.log('selectPlan called with planId:', planId);
     
     selectedPlan = dataPlans.find(plan => plan.id === planId);
