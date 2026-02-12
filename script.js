@@ -3,7 +3,7 @@
 // Data plans configuration
 const dataPlans = [
     {
-        id: 1,
+        id: 'basic',
         name: "Basic",
         data: "5GB",
         price: 300,
@@ -12,7 +12,7 @@ const dataPlans = [
         features: ["WhatsApp", "Facebook", "Basic browsing"]
     },
     {
-        id: 2,
+        id: 'standard',
         name: "Standard",
         data: "12GB",
         price: 500,
@@ -21,7 +21,7 @@ const dataPlans = [
         features: ["Social media", "Video streaming", "Unlimited WhatsApp"]
     },
     {
-        id: 3,
+        id: 'premium',
         name: "Premium",
         data: "35GB",
         price: 1000,
@@ -30,7 +30,7 @@ const dataPlans = [
         features: ["HD streaming", "Gaming", "All social apps"]
     },
     {
-        id: 4,
+        id: 'ultra',
         name: "Ultra",
         data: "40GB",
         price: 1500,
@@ -39,7 +39,7 @@ const dataPlans = [
         features: ["4K streaming", "Online gaming", "Hotspot enabled"]
     },
     {
-        id: 5,
+        id: 'mega',
         name: "Mega",
         data: "50GB",
         price: 2000,
@@ -48,7 +48,7 @@ const dataPlans = [
         features: ["Unlimited everything", "5G ready", "Priority support"]
     },
     {
-        id: 6,
+        id: 'ultimate',
         name: "Ultimate",
         data: "65GB",
         price: 3000,
@@ -145,7 +145,7 @@ function createPlanCard(plan) {
     col.className = 'col-md-6 col-lg-4';
     
     col.innerHTML = `
-        <div class="card plan-card h-100" data-plan-id="${plan.id}" onclick="selectPlan(${plan.id})">
+        <div class="card plan-card h-100" data-plan-id="${plan.id}" onclick="selectPlan('${plan.id}')">
             ${plan.popular ? '<div class="popular-badge">POPULAR</div>' : ''}
             <div class="card-body text-center">
                 <h5 class="card-title">${plan.name}</h5>
@@ -159,7 +159,7 @@ function createPlanCard(plan) {
                     ${plan.features.map(feature => `<li>${feature}</li>`).join('')}
                 </ul>
             </div>
-            <button class="btn btn-danger btn-sm mt-3" onclick="selectPlan(${plan.id})">
+            <button class="btn btn-danger btn-sm mt-3" onclick="selectPlan('${plan.id}')">
                 Select Plan
             </button>
         </div>
