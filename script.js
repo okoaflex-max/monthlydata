@@ -169,10 +169,7 @@ function createPlanCard(plan) {
 }
 
 function selectPlan(planId) {
-    console.log('selectPlan called with planId:', planId);
-    
     selectedPlan = dataPlans.find(plan => plan.id === planId);
-    console.log('selectedPlan found:', selectedPlan);
     
     // Update UI to show selected plan
     document.querySelectorAll('.plan-card').forEach(card => {
